@@ -35,7 +35,7 @@ class HomePage extends StatelessWidget {
             ),
             IconButton(
               icon: const Text(
-                'hello',
+                'Hello',
                 style: TextStyle(
                   color: Colors.white,
                 ),

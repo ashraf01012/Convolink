@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:untitled/features/auth/registration/view/components/registration_body_widget.dart';
 import 'package:untitled/features/auth/registration/view/components/registration_bottom_widget.dart';
-
+//regestration page
 class RegistrationPage extends StatelessWidget {
   const RegistrationPage({super.key});
 

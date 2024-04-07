@@ -7,7 +7,7 @@ class ChatValidation{
     RegExp regExp = RegExp(source);
     bool accept = regExp.hasMatch(phone??'');
     if(accept)return null;
-    return 'invalid phone';
+    return 'invalid Phone';
   }
   String? passwordValidate(String? pass){
     if((pass?.length??0)>=12){

@@ -4,7 +4,7 @@ import 'package:untitled/features/auth/registration/view/components/registration
 //regestration page
 class RegistrationPage extends StatelessWidget {
   const RegistrationPage({super.key});
-
+//wellcome
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -13,7 +13,7 @@ class ChatValidation{
     if((pass?.length??0)>=12){
       return null;
     }
-    return 'Invalid Password';
+    return 'Invalid password';
   }
   String? emailValidate(String? mail){
     String source=r"^(\w){5,15}@gmail.com";

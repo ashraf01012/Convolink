@@ -12,7 +12,7 @@ class LogInBottomWidget extends StatelessWidget {
             _navigateToForget(context);
           },
           child: const Text(
-            'Forget password',
+            'Forget Password',
           ),
         ),
         Row(
@@ -29,7 +29,7 @@ class LogInBottomWidget extends StatelessWidget {
                 _navigateToCreateAccount(context);
               },
               child: const Text(
-                'Create a new account',
+                'Create a new Account',
               ),
             ),
           ],

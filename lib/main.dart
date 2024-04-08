@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'features/auth/login/view/page/login_page.dart';
 
 void main() {
-//all of us did that omar hefnawy mohamed , ashraf abdo kamel 
+//all of us did that omar hefnawy mohamed , ashraf abdo kamel,ahmad shawky eltabakh 
   MaterialApp materialApp = const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: LogInPage(),

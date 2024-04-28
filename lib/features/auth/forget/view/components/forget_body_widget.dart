@@ -4,6 +4,8 @@ import 'package:untitled/features/auth/verification/view/page/verification_page.
 
 class ForgetBodyWidget extends StatelessWidget {
   var emailController =TextEditingController();
+
+  ForgetBodyWidget({super.key});
   @override
   Widget build(BuildContext context) {
     return Padding(

@@ -12,7 +12,7 @@ class LogInBottomWidget extends StatelessWidget {
             _navigateToForget(context);
           },
           child: const Text(
-            'Forget Password',
+            'Forget password',
           ),
         ),
         Row(
@@ -29,7 +29,7 @@ class LogInBottomWidget extends StatelessWidget {
                 _navigateToCreateAccount(context);
               },
               child: const Text(
-                'Create a new Account',
+                'Create a new account',
               ),
             ),
           ],
@@ -38,7 +38,7 @@ class LogInBottomWidget extends StatelessWidget {
     );
   }
   void _navigateToCreateAccount(BuildContext context) {
-    Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const RegistrationPage()));
+    Navigator.of(context).push(MaterialPageRoute(builder: (context)=> RegistrationPage()));
   }
   void _navigateToForget(BuildContext context) {
     Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const ForgetPage()));

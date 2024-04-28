@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:untitled/features/auth/forget/view/page/forget_page.dart';
-import 'package:untitled/features/auth/login/view/page/login_page.dart';
 import 'package:untitled/features/auth/verification/view/components/verify_body_widget.dart';
 import 'package:untitled/features/auth/verification/view/components/verify_bottom_widget.dart';
 
@@ -21,7 +20,7 @@ class VerificationPage extends StatelessWidget {
         ),
         backgroundColor: Colors.amber,
       ),
-      body: VerifyBodyWidget(),
+      body: SingleChildScrollView(child: VerifyBodyWidget()),
       bottomNavigationBar: const SizedBox(
         height: 100,
         child: VerifyBottomWidget(),

@@ -7,19 +7,25 @@ class ChatValidation{
     RegExp regExp = RegExp(source);
     bool accept = regExp.hasMatch(phone??'');
     if(accept)return null;
-    return 'invalid Phone';
+    return 'invalid phone';
   }
   String? passwordValidate(String? pass){
     if((pass?.length??0)>=12){
       return null;
     }
-    return 'Invalid password';
+    return 'invalid password';
   }
   String? emailValidate(String? mail){
     String source=r"^(\w){5,15}@gmail.com";
     RegExp regExp=RegExp(source);
     bool accept =regExp.hasMatch(mail??'');
     if(accept)return null;
-    return 'Invalid Email';
+    return 'invalid email';
+  }
+  bool? passwordCheek(String? pass1,String? pass2){
+    if(pass1==pass2){
+      return true;
+    }
+    return false;
   }
 }

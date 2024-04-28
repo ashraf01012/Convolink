@@ -20,7 +20,7 @@ class HomePage extends StatelessWidget {
             },
           ),
           title: const Text(
-            "Convlink",
+            "ConvLink",
             style: TextStyle(
               color: Colors.white,
             ),
@@ -35,7 +35,7 @@ class HomePage extends StatelessWidget {
             ),
             IconButton(
               icon: const Text(
-                'Hello',
+                'hello',
                 style: TextStyle(
                   color: Colors.white,
                 ),

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:untitled/core/utils/validation.dart';
 import 'package:untitled/features/auth/home/view/page/home_page.dart';
-
+import 'package:untitled/features/auth/login/controller/login_cubit.dart';
 class LogInBodyWidget extends StatelessWidget {
-  var emailController =TextEditingController();
-  var passwordController =TextEditingController();
-  LogInBodyWidget({super.key});
+   LogInBodyWidget({super.key, required this.controller});
+  final LoginCubit controller;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -15,6 +14,14 @@ class LogInBodyWidget extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+               const CircleAvatar(
+                backgroundImage: AssetImage("assets/images/logo.png"),
+                radius: 100,
+                backgroundColor: Colors.white,
+              ),
+        const SizedBox(
+        height: 50,
+      ),
               const Text(
                 'Login',
                 style: TextStyle(
@@ -30,7 +37,7 @@ class LogInBodyWidget extends StatelessWidget {
               TextFormField(
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 validator:ChatValidation().emailValidate,
-                controller: emailController,
+                controller: controller.emailController,
                 keyboardType: TextInputType.emailAddress,
                 decoration: decoration.copyWith(
                   labelText:'Email',
@@ -49,7 +56,7 @@ class LogInBodyWidget extends StatelessWidget {
               TextFormField(
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 validator: ChatValidation().passwordValidate,
-                controller: passwordController,
+                controller: controller.passwordController,
                 keyboardType: TextInputType.visiblePassword,
                 obscureText: true,
                 decoration: decoration.copyWith(

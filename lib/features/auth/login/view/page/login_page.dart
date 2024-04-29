@@ -15,7 +15,7 @@ class LogInPage extends StatelessWidget {
         builder: (context, state) {
           final LoginCubit controller =context.read<LoginCubit>();
           return Scaffold(
-            backgroundColor: Colors.black12,
+            backgroundColor:Colors.blueGrey[200],
             body: LogInBodyWidget(
               controller: controller,
             ),

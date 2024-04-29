@@ -9,7 +9,7 @@ class HomePage extends StatelessWidget {
     return   Scaffold(
       appBar: AppBar(
 
-          backgroundColor: Colors.amber,
+          backgroundColor: Colors.blueGrey[200],
           leading:  IconButton(
             icon: const Icon(
               Icons.arrow_back_ios_new,

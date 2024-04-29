@@ -25,7 +25,18 @@ class RegistrationBodyWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const SizedBox(
-                height: 10,
+                height: 15,
+              ),
+              const Text(
+                'SIGNUP',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 40,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(
+                height: 15,
               ),
               //first name
               TextFormField(
@@ -36,15 +47,12 @@ class RegistrationBodyWidget extends StatelessWidget {
                 inputFormatters: [
                   FilteringTextInputFormatter.allow(RegExp(r'[A-Za-z]',),),
                 ],
-                style: const TextStyle(
-                  color: Colors.amber,
-                ),
                 decoration: decoration.copyWith(
                   labelText: 'First Name',
                 ),
               ),
               const SizedBox(
-                height: 10,
+                height: 15,
               ),
               //last name
               TextFormField(
@@ -55,15 +63,13 @@ class RegistrationBodyWidget extends StatelessWidget {
                   FilteringTextInputFormatter.allow(RegExp(r'[A-Za-z]',),),
                 ],
                 keyboardType: TextInputType.name,
-                style: const TextStyle(
-                  color: Colors.amber,
-                ),
+
                 decoration: decoration.copyWith(
                   labelText: 'Last Name',
                 ),
               ),
               const SizedBox(
-                height: 10,
+                height: 15,
               ),
               //phone
               TextFormField(
@@ -74,37 +80,29 @@ class RegistrationBodyWidget extends StatelessWidget {
                   FilteringTextInputFormatter.allow(RegExp(r'[0-9]',),),
                 ],
                 keyboardType: TextInputType.phone,
-                style: const TextStyle(
-                  color: Colors.amber,
-                ),
                 decoration: decoration.copyWith(
                   labelText: 'Phone',
                 ),
               ),
               const SizedBox(
-                height: 10,
+                height: 15,
               ),
               //email
               TextFormField(
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 validator:ChatValidation().emailValidate,
-                inputFormatters: [
-                  FilteringTextInputFormatter.allow(RegExp(r'\w',),),
-                ],
                 controller: controller.emailController,
                 keyboardType: TextInputType.emailAddress,
-                style: const TextStyle(
-                  color: Colors.amber,
-                ),
                 decoration: decoration.copyWith(
                   labelText:'Email',
                   prefixIcon: const Icon(
                     Icons.mail,
+                    size: 30,
                   ),
                 ),
               ),
               const SizedBox(
-                height: 10,
+                height: 15,
               ),
               //password
               TextFormField(
@@ -112,23 +110,23 @@ class RegistrationBodyWidget extends StatelessWidget {
                 validator: ChatValidation().passwordValidate,
                 controller: controller.passwordController,
                 keyboardType: TextInputType.visiblePassword,
-                style: const TextStyle(
-                  color: Colors.amber,
-                ),
+
                 obscureText: true,
-                obscuringCharacter: "*",
+                obscuringCharacter: '⬤',
                 decoration: decoration.copyWith(
                   labelText: 'Password',
                   prefixIcon: const Icon(
-                    Icons.key,
+                    Icons.key_rounded,
+                    size: 30,
                   ),
                   suffixIcon: const Icon(
-                    Icons.remove_red_eye_sharp,
+                    Icons.remove_red_eye_rounded,
+                    size: 30,
                   ),
                 ),
               ),
               const SizedBox(
-                height: 10,
+                height: 15,
               ),
               //confirm password
               TextFormField(
@@ -136,23 +134,23 @@ class RegistrationBodyWidget extends StatelessWidget {
                 validator: ChatValidation().passwordValidate,
                 controller: controller.confirmPasswordController,
                 keyboardType: TextInputType.visiblePassword,
-                style: const TextStyle(
-                  color: Colors.amber,
-                ),
+
                 obscureText: true,
-                obscuringCharacter: "*",
+                obscuringCharacter: '⬤',
                 decoration: decoration.copyWith(
                   labelText: 'Confirm Password',
                   prefixIcon: const Icon(
-                    Icons.key,
+                    Icons.key_rounded,
+                    size: 30,
                   ),
                   suffixIcon: const Icon(
-                    Icons.remove_red_eye_sharp,
+                    Icons.remove_red_eye_rounded,
+                    size: 30,
                   ),
                 ),
               ),
               const SizedBox(
-                height: 10,
+                height: 30,
               ),
               //submitted button
               MaterialButton(
@@ -160,25 +158,20 @@ class RegistrationBodyWidget extends StatelessWidget {
                       borderRadius: BorderRadius.all(
                           Radius.circular(10.0))
                   ),
-                  color: Colors.amber,
+                  color: Colors.black87,
                   minWidth: double.infinity,
                   height: 50,
                   elevation: 7,
                   onPressed: (){
-                    bool? a=ChatValidation().passwordCheek(controller.passwordController.text, controller.confirmPasswordController.text)??false;
-                   if(a){
-                     Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const HomePage()));
-                   }
-                   else{
-                    // cheekPass();
-                   }
+                    controller.onPressedButton(context);
                   },
                   child:
                   const Text(
                     'Submit',
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 15,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
                     ),
                   )
               ),
@@ -194,18 +187,18 @@ class RegistrationBodyWidget extends StatelessWidget {
 
   InputDecoration decoration = const InputDecoration(
     labelStyle: TextStyle(
-      color: Colors.amber,
+      color: Colors.black,
     ),
     border: OutlineInputBorder(
       borderSide: BorderSide(
-        color: Colors.grey,
+        color: Colors.black,
         width: 1,
       ),
       borderRadius: BorderRadius.all(Radius.circular(20)),
     ),
     focusedBorder: OutlineInputBorder(
       borderSide: BorderSide(
-        color: Colors.amber,
+        color: Colors.black,
         width: 1,
       ),
       borderRadius: BorderRadius.all(Radius.circular(20)),
@@ -220,9 +213,4 @@ class RegistrationBodyWidget extends StatelessWidget {
       ),
     ),
   );
-  Text cheekPass(){
-    return const Text(
-        'password not equal'
-    );
-  }
 }

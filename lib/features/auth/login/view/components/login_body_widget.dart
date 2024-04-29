@@ -14,10 +14,10 @@ class LogInBodyWidget extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-               const CircleAvatar(
-                backgroundImage: AssetImage("assets/images/logo.png"),
+                CircleAvatar(
+                backgroundImage: const AssetImage("assets/images/logo.png"),
                 radius: 100,
-                backgroundColor: Colors.white,
+                backgroundColor: Colors.blueGrey[200],
               ),
         const SizedBox(
         height: 50,
@@ -25,7 +25,7 @@ class LogInBodyWidget extends StatelessWidget {
               const Text(
                 'Login',
                 style: TextStyle(
-                  color: Colors.amber,
+                  color: Colors.black,
                   fontSize: 40,
                   fontWeight: FontWeight.bold,
                 ),
@@ -43,10 +43,8 @@ class LogInBodyWidget extends StatelessWidget {
                   labelText:'Email',
                   prefixIcon: const Icon(
                     Icons.mail,
+                    size: 30,
                   ),
-                ),
-                style: const TextStyle(
-                  color: Colors.amber,
                 ),
               ),
               const SizedBox(
@@ -59,18 +57,19 @@ class LogInBodyWidget extends StatelessWidget {
                 controller: controller.passwordController,
                 keyboardType: TextInputType.visiblePassword,
                 obscureText: true,
+                obscuringCharacter: '⬤',
                 decoration: decoration.copyWith(
                   labelText:'Password',
                   prefixIcon: const Icon(
-                    Icons.key,
+                    Icons.key_rounded,
+                    size: 30,
                   ),
                   suffixIcon:const Icon(
                     Icons.remove_red_eye_sharp,
+                    size: 30,
                   ) ,
                 ),
-                style: const TextStyle(
-                  color: Colors.amber,
-                ),
+
               ),
               const SizedBox(
                 height: 30,
@@ -81,7 +80,7 @@ class LogInBodyWidget extends StatelessWidget {
                       borderRadius: BorderRadius.all(
                           Radius.circular(10.0))
                   ),
-                  color: Colors.amber,
+                  color: Colors.black87,
                   minWidth: double.infinity,
                   height: 50,
                   elevation: 7,
@@ -92,6 +91,7 @@ class LogInBodyWidget extends StatelessWidget {
                     'LOGIN',
                     style: TextStyle(
                       color: Colors.white,
+                      fontWeight: FontWeight.bold,
                       fontSize: 25,
                     ),
                   )
@@ -105,18 +105,20 @@ class LogInBodyWidget extends StatelessWidget {
 
   InputDecoration decoration = const InputDecoration(
     labelStyle: TextStyle(
-      color: Colors.amber,
+      color: Colors.black,
+      fontSize: 20,
     ),
       border: OutlineInputBorder(
         borderSide: BorderSide(
-          color: Colors.grey,
-          width: 2,
+          color: Colors.black,
+          width: 3,
         ),
+
         borderRadius: BorderRadius.all(Radius.circular(20)),
       ),
       focusedBorder: OutlineInputBorder(
         borderSide: BorderSide(
-          color: Colors.amber,
+          color: Colors.black,
           width: 3,
         ),
         borderRadius: BorderRadius.all(Radius.circular(20)),

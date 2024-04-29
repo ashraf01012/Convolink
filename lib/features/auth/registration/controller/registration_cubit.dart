@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
+import 'package:untitled/features/auth/login/view/page/login_page.dart';
 
 part 'registration_state.dart';
 
@@ -14,8 +15,11 @@ class RegistrationCubit extends Cubit<RegistrationState> {
   TextEditingController phoneController = TextEditingController();
   GlobalKey<FormState> formKey=GlobalKey<FormState>();
   void onPressedButton(BuildContext context){
-    if(formKey.currentState!.validate()){
-      Navigator.pushNamed(context, 'login');
+    if((formKey.currentState!.validate())&&(passwordController.text==confirmPasswordController.text)){
+      Navigator.pushNamed(context, 'home');
     }
+  }
+  void onTapAlready(BuildContext context) {
+    Navigator.of(context).pop(MaterialPageRoute(builder: (context)=>const LogInPage()));
   }
 }

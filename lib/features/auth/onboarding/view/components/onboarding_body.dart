@@ -1,5 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:untitled/core/utils/context_extension.dart';
 import 'package:untitled/features/auth/onboarding/controller/onboarding_controller_cubit.dart';
 
 class OnboardingBody extends StatelessWidget {
@@ -10,8 +12,8 @@ class OnboardingBody extends StatelessWidget {
 
     return Column(
       children: [
-        const Text(
-            'Welcome'
+        SizedBox(
+          height: context.height/15,
         ),
         Expanded(
           child: BlocProvider<OnboardingControllerCubit>.value(
@@ -25,7 +27,24 @@ class OnboardingBody extends StatelessWidget {
                     return Column(
                       children: [
                         Image.asset(controller.data[index].image),
-                        Text(controller.data[index].title),
+                        Text(
+                          controller.data[index].title,
+                          style: const TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 25,
+                          ),
+                        ),
+                        SizedBox(
+                          width: context.width/2,
+                          child: Text(
+                            controller.data[index].subtitle,
+                            style:  const TextStyle(
+                              color: Colors.black45,
+                              fontSize: 15,
+                            ),
+                          ),
+                        ),
                       ],
                     );
                   }),

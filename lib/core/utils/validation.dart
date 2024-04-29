@@ -1,6 +1,7 @@
-class ChatValidation{
+ class ChatValidation{
   String? nameValidate(String? name){
-    return null;
+    if(name!.isEmpty)return 'invalid name';
+    return null ;
   }
   String? phoneValidate(String? phone){
     String source = r"^01[0125]\d{8}";
@@ -10,7 +11,7 @@ class ChatValidation{
     return 'invalid phone';
   }
   String? passwordValidate(String? pass){
-    if((pass?.length??0)>=12){
+    if((pass?.length??0)>=10){
       return null;
     }
     return 'invalid password';
@@ -21,11 +22,5 @@ class ChatValidation{
     bool accept =regExp.hasMatch(mail??'');
     if(accept)return null;
     return 'invalid email';
-  }
-  bool? passwordCheek(String? pass1,String? pass2){
-    if(pass1==pass2){
-      return true;
-    }
-    return false;
   }
 }

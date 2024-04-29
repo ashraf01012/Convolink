@@ -12,7 +12,7 @@ class OnboardingControllerCubit extends Cubit<OnboardingControllerState> {
   PageController pageController = PageController();
   void toNext() {
     pageController.nextPage(
-      duration: const Duration(seconds: 1),
+      duration: const Duration(milliseconds: 250),
       curve: Curves.linear,
     );
   }
@@ -22,23 +22,26 @@ class OnboardingControllerCubit extends Cubit<OnboardingControllerState> {
     await sharedPreferences.setBool('onboarding',true);
     Navigator.push(
         context,
-        MaterialPageRoute(
-          builder: (context) => const LogInPage(),
+        MaterialPageRoute<void>(
+          builder: (BuildContext context) => const LogInPage(),
         ));
   }
 
   List data = [
     OnboardingModel(
-      image: 'assets/images/logo.png',
-      title: 'first',
+      image: 'assets/images/onboarding1.png',
+      title: 'Find the right friends',
+      subtitle: 'We are tailored to meet your needs of finding the perfect friend',
     ),
     OnboardingModel(
-      image: 'assets/images/logo.png',
-      title: 'scound',
+      image: 'assets/images/onboarding2.png',
+      title: 'Choose the right friends',
+      subtitle: 'Get to choose the out of the best, as we will provide you options',
     ),
     OnboardingModel(
-      image: 'assets/images/logo.png',
-      title: 'third',
+      image: 'assets/images/onboarding3.png',
+      title: 'Experience hospitality',
+      subtitle: 'Pay , Enjoy and you will definitely recommend us to friends and family',
     ),
   ];
 }

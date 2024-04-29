@@ -12,7 +12,9 @@ class VerifyBottomWidget extends StatelessWidget {
         },
             child:const Text('Send the code again',
               style: TextStyle(
-                color: Colors.amber,
+                color: Colors.black,
+                fontSize: 20,
+
               ),
             ),
         ),

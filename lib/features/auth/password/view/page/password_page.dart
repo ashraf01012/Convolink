@@ -8,18 +8,7 @@ class PasswordPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading:IconButton(
-            icon: const Icon(
-              Icons.arrow_back_ios,
-            ),
-             onPressed: () {
-               Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const ForgetPage()));
-             },
-          ),
-
-        backgroundColor: Colors.amber,
-      ),
+      backgroundColor:Colors.blueGrey[200],
       body: PasswordBodyWidget(),
     );
   }

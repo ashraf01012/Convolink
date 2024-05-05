@@ -17,31 +17,27 @@ class OnboardingControllerCubit extends Cubit<OnboardingControllerState> {
     );
   }
 
-  Future<void> onSkip(BuildContext context) async {
+  Future<void> onGetStart(BuildContext context) async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     await sharedPreferences.setBool('onboarding',true);
-    Navigator.push(
-        context,
-        MaterialPageRoute<void>(
-          builder: (BuildContext context) => const LogInPage(),
-        ));
+    Navigator.popAndPushNamed(context, 'login');
   }
 
   List data = [
     OnboardingModel(
       image: 'assets/images/onboarding1.png',
-      title: 'Find the right friends',
-      subtitle: 'We are tailored to meet your needs of finding the perfect friend',
+      title: 'Joy in Every Click',
+      subtitle: 'Elevate your shopping experience with us. Explore curated collections and exclusive deals that turn each purchase into a moment of joy',
     ),
     OnboardingModel(
       image: 'assets/images/onboarding2.png',
-      title: 'Choose the right friends',
-      subtitle: 'Get to choose the out of the best, as we will provide you options',
+      title: 'We are Here for You',
+      subtitle: 'Experience unwavering support from our dedicated team. No matter the question or concern, we are here to make your journey seamless and stress-free',
     ),
     OnboardingModel(
       image: 'assets/images/onboarding3.png',
-      title: 'Experience hospitality',
-      subtitle: 'Pay , Enjoy and you will definitely recommend us to friends and family',
+      title: 'On-Time, Every Time',
+      subtitle: 'Expect reliable and swift delivery, ensuring your goods arrive not just on time but with the care and quality you deserve. Your happiness is our commitment.',
     ),
   ];
 }

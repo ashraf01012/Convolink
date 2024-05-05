@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:untitled/core/utils/constants.dart';
 import 'package:untitled/features/auth/forget/view/components/forget_body_widget.dart';
 class ForgetPage extends StatelessWidget {
   const ForgetPage({super.key});
@@ -6,7 +7,7 @@ class ForgetPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     backgroundColor: Colors.blueGrey[200],
+     backgroundColor: kPrimaryColor,
       body: ForgetBodyWidget(),
 
     );

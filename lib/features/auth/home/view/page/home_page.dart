@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:untitled/features/auth/home/view/components/home_body_widget.dart';
 import 'package:untitled/features/auth/login/view/page/login_page.dart';
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
-
+   const HomePage({super.key});
   @override
   Widget build(BuildContext context) {
     return   Scaffold(

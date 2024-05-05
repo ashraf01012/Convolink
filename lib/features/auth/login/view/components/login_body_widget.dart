@@ -1,135 +1,166 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:untitled/core/utils/adminMode.dart';
+import 'package:untitled/core/utils/constants.dart';
 import 'package:untitled/core/utils/validation.dart';
-import 'package:untitled/features/auth/home/view/page/home_page.dart';
 import 'package:untitled/features/auth/login/controller/login_cubit.dart';
-class LogInBodyWidget extends StatelessWidget {
-   LogInBodyWidget({super.key, required this.controller});
+import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+
+class LogInBodyWidget extends StatefulWidget {
+  const LogInBodyWidget({super.key, required this.controller});
+
   final LoginCubit controller;
+
+  @override
+  State<LogInBodyWidget> createState() => _LogInBodyWidgetState();
+}
+
+class _LogInBodyWidgetState extends State<LogInBodyWidget> {
+
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(20),
-      child: Center(
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-                CircleAvatar(
-                backgroundImage: const AssetImage("assets/images/logo.png"),
-                radius: 100,
-                backgroundColor: Colors.blueGrey[200],
-              ),
-        const SizedBox(
-        height: 50,
-      ),
-              const Text(
-                'Login',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 40,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(
-                height: 50,
-              ),
-              //email
-              TextFormField(
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                validator:ChatValidation().emailValidate,
-                controller: controller.emailController,
-                keyboardType: TextInputType.emailAddress,
-                decoration: decoration.copyWith(
-                  labelText:'Email',
-                  prefixIcon: const Icon(
-                    Icons.mail,
-                    size: 30,
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              //password
-              TextFormField(
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                validator: ChatValidation().passwordValidate,
-                controller: controller.passwordController,
-                keyboardType: TextInputType.visiblePassword,
-                obscureText: true,
-                obscuringCharacter: '⬤',
-                decoration: decoration.copyWith(
-                  labelText:'Password',
-                  prefixIcon: const Icon(
-                    Icons.key_rounded,
-                    size: 30,
-                  ),
-                  suffixIcon:const Icon(
-                    Icons.remove_red_eye_sharp,
-                    size: 30,
-                  ) ,
-                ),
+    return BlocProvider(
+      create: (context) => LoginCubit(),
+      child: BlocBuilder<LoginCubit, LoginState>(
+        builder: (context, state) {
+          return ModalProgressHUD(
+            inAsyncCall: BlocProvider.of<LoginCubit>(context).isLoading,
+            child: Form(
+              key: widget.controller.formKey,
+              child: Padding(
+                padding: const EdgeInsets.all(20),
+                child: Center(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        CircleAvatar(
+                          backgroundImage: const AssetImage(
+                              "assets/images/logo.png"),
+                          radius: 100,
+                          backgroundColor: Colors.blueGrey[200],
+                        ),
+                        const SizedBox(
+                          height: 50,
+                        ),
+                        const Text(
+                          'Login',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 40,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 50,
+                        ),
+                        //email
+                        TextFormField(
+                          autovalidateMode: AutovalidateMode.onUserInteraction,
+                          validator: ChatValidation().emailValidate,
+                          controller: widget.controller.emailController,
+                          keyboardType: TextInputType.emailAddress,
+                          decoration: decoration.copyWith(
+                            labelText: 'Email',
+                            prefixIcon: const Icon(
+                              Icons.mail,
+                              size: 30,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        //password
+                        TextFormField(
+                          autovalidateMode: AutovalidateMode.onUserInteraction,
+                          validator: ChatValidation().passwordValidate,
+                          controller: widget.controller.passwordController,
+                          keyboardType: TextInputType.visiblePassword,
+                          obscureText: true,
+                          obscuringCharacter: '⬤',
+                          decoration: decoration.copyWith(
+                            labelText: 'Password',
+                            prefixIcon: const Icon(
+                              Icons.key_rounded,
+                              size: 30,
+                            ),
+                            suffixIcon: const Icon(
+                              Icons.remove_red_eye_sharp,
+                              size: 30,
+                            ),
+                          ),
 
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              //login button
-              MaterialButton(
-                  shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(
-                          Radius.circular(10.0))
-                  ),
-                  color: Colors.black87,
-                  minWidth: double.infinity,
-                  height: 50,
-                  elevation: 7,
-                  onPressed: (){
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const HomePage()));
-                  },
-                  child: const Text(
-                    'LOGIN',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 25,
+                        ),
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        //login button
+                        MaterialButton(
+                            shape: const RoundedRectangleBorder(
+                                borderRadius: BorderRadius.all(
+                                    Radius.circular(10.0))
+                            ),
+                            color: Colors.black87,
+                            minWidth: double.infinity,
+                            height: 50,
+                            elevation: 7,
+                            onPressed: () {
+                              widget.controller.onPressedButton(context);
+                            },
+                            child: const Text(
+                              'LOGIN',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 25,
+                              ),
+                            )
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: RadioListTile(
+                                  value: 'admin',
+                                title: const Text('Admin'),
+                                groupValue: widget.controller.radioValueController,
+                                  onChanged: (value){
+                                    AdminMode().changeIsAdmin(true);
+                                    setState(() {
+                                      widget.controller.radioValueController = (widget.controller.radioValueController == value ? null : value)!;
+                                    });
+                                  },
+                              
+                              ),
+                            ),
+                            Expanded(
+                              child: RadioListTile(
+                                value: 'user',
+                                title: const Text('User'),
+                                groupValue: widget.controller.radioValueController,
+                                onChanged: (value){
+                                  AdminMode().changeIsAdmin(false);
+                                  setState(() {
+                                    widget.controller.radioValueController = (widget.controller.radioValueController == value ? null : value)!;
+                                  });
+                                },
+                              
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
                     ),
-                  )
+                  ),
+                ),
               ),
-            ],
-          ),
-        ),
+            ),
+          );
+        },
       ),
     );
   }
-
-  InputDecoration decoration = const InputDecoration(
-    labelStyle: TextStyle(
-      color: Colors.black,
-      fontSize: 20,
-    ),
-      border: OutlineInputBorder(
-        borderSide: BorderSide(
-          color: Colors.black,
-          width: 3,
-        ),
-
-        borderRadius: BorderRadius.all(Radius.circular(20)),
-      ),
-      focusedBorder: OutlineInputBorder(
-        borderSide: BorderSide(
-          color: Colors.black,
-          width: 3,
-        ),
-        borderRadius: BorderRadius.all(Radius.circular(20)),
-      ),
-      errorBorder: OutlineInputBorder(
-        borderSide: BorderSide(
-          color: Colors.red,
-          width: 2,
-        ),
-        borderRadius: BorderRadius.all(Radius.circular(20),
-        ),
-      ),
-      );
 }

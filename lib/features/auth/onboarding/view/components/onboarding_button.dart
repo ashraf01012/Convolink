@@ -27,7 +27,7 @@ class OnboardingButton extends StatelessWidget {
                     ),
                     color: Colors.black87,
                     onPressed: () {
-                      controller.onSkip(context);
+                      controller.onGetStart(context);
                     },
                     child: const Text(
                       'GET STARTED',
@@ -47,7 +47,7 @@ class OnboardingButton extends StatelessWidget {
                     color: Colors.black87,
                     onPressed:controller.toNext,
                     child: const Text(
-                      'Skip',
+                      'Next',
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,

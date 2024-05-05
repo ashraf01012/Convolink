@@ -5,6 +5,7 @@ import 'package:untitled/features/auth/login/controller/login_cubit.dart';
 import 'package:untitled/features/auth/registration/view/page/registration_page.dart';
 class LogInBottomWidget extends StatelessWidget {
   const LogInBottomWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(

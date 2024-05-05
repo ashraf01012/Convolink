@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:untitled/core/utils/constants.dart';
 import 'package:untitled/features/auth/login/controller/login_cubit.dart';
 import 'package:untitled/features/auth/login/view/components/login_body_widget.dart';
 import 'package:untitled/features/auth/login/view/components/login_bottom_widget.dart';
@@ -15,7 +16,7 @@ class LogInPage extends StatelessWidget {
         builder: (context, state) {
           final LoginCubit controller =context.read<LoginCubit>();
           return Scaffold(
-            backgroundColor:Colors.blueGrey[200],
+            backgroundColor:kPrimaryColor,
             body: LogInBodyWidget(
               controller: controller,
             ),

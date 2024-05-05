@@ -12,9 +12,7 @@ class OnboardingBody extends StatelessWidget {
 
     return Column(
       children: [
-        SizedBox(
-          height: context.height/15,
-        ),
+
         Expanded(
           child: BlocProvider<OnboardingControllerCubit>.value(
             value: controller ,
@@ -35,13 +33,15 @@ class OnboardingBody extends StatelessWidget {
                             fontSize: 25,
                           ),
                         ),
-                        SizedBox(
-                          width: context.width/2,
-                          child: Text(
-                            controller.data[index].subtitle,
-                            style:  const TextStyle(
-                              color: Colors.black45,
-                              fontSize: 15,
+                        Expanded(
+                          child: SizedBox(
+                            width: context.width/2,
+                            child: Text(
+                              controller.data[index].subtitle,
+                              style:  const TextStyle(
+                                color: Colors.black45,
+                                fontSize: 15,
+                              ),
                             ),
                           ),
                         ),

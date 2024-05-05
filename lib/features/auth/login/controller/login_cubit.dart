@@ -1,28 +1,59 @@
-import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:untitled/features/auth/forget/view/page/forget_page.dart';
-import 'package:untitled/features/auth/registration/view/page/registration_page.dart';
+import 'package:untitled/core/utils/adminMode.dart';
+import 'package:untitled/core/utils/snakeBar.dart';
 part 'login_state.dart';
 
-class LoginCubit extends Cubit<LoginState> {
+class LoginCubit extends Cubit<LoginState>  {
   LoginCubit() : super(LoginInitial());
+  bool isLoading =false;
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  String radioValueController = '';
+  final adminPassword = 'admin11111';
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
-
-  void onPressedButton(BuildContext context) {
+  Future<void> onPressedButton(BuildContext context) async {
     if (formKey.currentState!.validate()) {
-      Navigator.pushNamed(context, 'home');
+        formKey.currentState!.save();
+      if(radioValueController=='admin'){
+        if(passwordController.text==adminPassword){
+        try{
+          await loginUser();
+          Navigator.pushNamed(context, 'admin');
+        }on FirebaseAuthException catch(ex){
+
+          showSnackBar(context, 'Admin email is wrong');
+        }
+      }else{
+          showSnackBar(context,'Something went wrong !');
+        }
+      }else{
+      try{
+      await loginUser();
+      Navigator.popAndPushNamed(context, 'home',arguments: emailController.text);
+    } on FirebaseAuthException catch (ex){
+
+          showSnackBar(context,'Invalid email or password');
+
+      }on PlatformException catch (ex) {
+        showSnackBar(context,'Something went wrong !');
+      }
+      }
     }
-  }
+    }
+
 
   void onPressedForget(BuildContext context) {
-    Navigator.of(context).push(MaterialPageRoute(
-        builder: (context) => const ForgetPage()));
+    Navigator.pushNamed(context, 'forget');
   }
   void onPressedCreate(BuildContext context) {
-    Navigator.of(context).push(MaterialPageRoute(
-        builder: (context) => const RegistrationPage()));
+    Navigator.pushNamed(context, 'registration');
   }
+  Future<void> loginUser() async {
+    UserCredential user = await FirebaseAuth.instance
+        .signInWithEmailAndPassword(email: emailController.text, password: passwordController.text);
+  }
+
 }

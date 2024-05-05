@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:untitled/core/utils/constants.dart';
 import 'package:untitled/core/utils/context_extension.dart';
 import 'package:untitled/features/auth/registration/controller/registration_cubit.dart';
 import 'package:untitled/features/auth/registration/view/components/registration_body_widget.dart';
@@ -17,7 +18,7 @@ class RegistrationPage extends StatelessWidget {
           builder: (context, state) {
            final RegistrationCubit controller =context.read<RegistrationCubit>();
             return Scaffold(
-              backgroundColor: Colors.blueGrey[200],
+              backgroundColor:kPrimaryColor,
               body: SafeArea(
                 child: RegistrationBodyWidget(
                   controller: controller,

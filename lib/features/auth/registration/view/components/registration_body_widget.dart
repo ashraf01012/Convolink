@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:untitled/core/utils/constants.dart';
 import 'package:untitled/core/utils/validation.dart';
 import 'package:untitled/features/auth/home/view/page/home_page.dart';
 import 'package:untitled/features/auth/registration/controller/registration_cubit.dart';
@@ -28,7 +29,7 @@ class RegistrationBodyWidget extends StatelessWidget {
                 height: 15,
               ),
               const Text(
-                'SIGNUP',
+                'SIGN UP',
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 40,
@@ -36,7 +37,7 @@ class RegistrationBodyWidget extends StatelessWidget {
                 ),
               ),
               const SizedBox(
-                height: 15,
+                height: 20,
               ),
               //first name
               TextFormField(
@@ -60,7 +61,9 @@ class RegistrationBodyWidget extends StatelessWidget {
                 validator: ChatValidation().nameValidate,
                 controller: controller.lastController,
                 inputFormatters: [
-                  FilteringTextInputFormatter.allow(RegExp(r'[A-Za-z]',),),
+                  FilteringTextInputFormatter.allow(
+                    RegExp(r'[A-Za-z]',),
+                  ),
                 ],
                 keyboardType: TextInputType.name,
 
@@ -92,6 +95,9 @@ class RegistrationBodyWidget extends StatelessWidget {
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 validator:ChatValidation().emailValidate,
                 controller: controller.emailController,
+                inputFormatters: [
+                  FilteringTextInputFormatter.singleLineFormatter,
+                ],
                 keyboardType: TextInputType.emailAddress,
                 decoration: decoration.copyWith(
                   labelText:'Email',
@@ -185,32 +191,5 @@ class RegistrationBodyWidget extends StatelessWidget {
 );
   }
 
-  InputDecoration decoration = const InputDecoration(
-    labelStyle: TextStyle(
-      color: Colors.black,
-    ),
-    border: OutlineInputBorder(
-      borderSide: BorderSide(
-        color: Colors.black,
-        width: 1,
-      ),
-      borderRadius: BorderRadius.all(Radius.circular(20)),
-    ),
-    focusedBorder: OutlineInputBorder(
-      borderSide: BorderSide(
-        color: Colors.black,
-        width: 1,
-      ),
-      borderRadius: BorderRadius.all(Radius.circular(20)),
-    ),
-    errorBorder: OutlineInputBorder(
-      borderSide: BorderSide(
-        color: Colors.red,
-        width: 1,
-      ),
-      borderRadius: BorderRadius.all(
-        Radius.circular(20),
-      ),
-    ),
-  );
+
 }

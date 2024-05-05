@@ -25,9 +25,7 @@ class HomeBodyWidget extends StatelessWidget {
               alignment: Alignment.bottomCenter,
               children: [
                 const Image(
-                  image: NetworkImage(
-                    'https://wallpapers-fenix.eu/download.php?ID=170798&absol=211208/103359650.jpg&dwn=14',
-                  ),
+                  image: AssetImage('assets/images/logo.png'),
                   height: 200.0,
                   width: 200.0,
                   fit: BoxFit.cover,

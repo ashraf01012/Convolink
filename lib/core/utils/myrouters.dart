@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:untitled/features/auth/admin/view/page/admin_page.dart';
 import 'package:untitled/features/auth/forget/view/page/forget_page.dart';
-import 'package:untitled/features/auth/home/view/page/home_page.dart';
+import 'package:untitled/features/auth/dashboard/view/page/dashboard_page.dart';
 import 'package:untitled/features/auth/login/view/page/login_page.dart';
 import 'package:untitled/features/auth/onboarding/view/page/onboarding_page.dart';
 import 'package:untitled/features/auth/registration/view/page/registration_page.dart';
@@ -25,7 +25,7 @@ class MyRoutes {
         );
       case 'home':
         return MaterialPageRoute<dynamic>(
-          builder: (BuildContext context) => const HomePage(),
+          builder: (BuildContext context) => const DashBoardPage(),
         );
       case 'forget':
         return MaterialPageRoute<dynamic>(

@@ -23,11 +23,12 @@ Future<void> main() async {
     onGenerateInitialRoutes: (_) => MyRoutes.initRoutes,
   );
   runApp(
-    DevicePreview(
-      enabled: true,
-      builder: (context) => materialApp, // Wrap your app
-    ),
+    materialApp,
   );
 }
+// DevicePreview(
+// enabled: true,
+// builder: (context) => materialApp, // Wrap your app
+// ),
 
 

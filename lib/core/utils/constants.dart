@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
 const kPrimaryColor =Color(0xFFB0BEC5);
+const kSecondryColor =Color(0xFF78909C);
+final double appBarHeight = AppBar().preferredSize.height;
 const  decoration =  InputDecoration(
   labelStyle: TextStyle(
     color: Colors.black,

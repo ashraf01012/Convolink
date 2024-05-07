@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:untitled/core/utils/adminMode.dart';
 import 'package:untitled/core/utils/constants.dart';
 import 'package:untitled/core/utils/validation.dart';
 import 'package:untitled/features/auth/login/controller/login_cubit.dart';
@@ -120,38 +119,6 @@ class _LogInBodyWidgetState extends State<LogInBodyWidget> {
                         const SizedBox(
                           height: 20,
                         ),
-                        Row(
-                          children: [
-                            Expanded(
-                              child: RadioListTile(
-                                  value: 'admin',
-                                title: const Text('Admin'),
-                                groupValue: widget.controller.radioValueController,
-                                  onChanged: (value){
-                                    AdminMode().changeIsAdmin(true);
-                                    setState(() {
-                                      widget.controller.radioValueController = (widget.controller.radioValueController == value ? null : value)!;
-                                    });
-                                  },
-                              
-                              ),
-                            ),
-                            Expanded(
-                              child: RadioListTile(
-                                value: 'user',
-                                title: const Text('User'),
-                                groupValue: widget.controller.radioValueController,
-                                onChanged: (value){
-                                  AdminMode().changeIsAdmin(false);
-                                  setState(() {
-                                    widget.controller.radioValueController = (widget.controller.radioValueController == value ? null : value)!;
-                                  });
-                                },
-                              
-                              ),
-                            ),
-                          ],
-                        )
                       ],
                     ),
                   ),

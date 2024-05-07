@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:untitled/core/utils/adminMode.dart';
 import 'package:untitled/core/utils/snakeBar.dart';
 part 'login_state.dart';
 
@@ -12,22 +11,18 @@ class LoginCubit extends Cubit<LoginState>  {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   String radioValueController = '';
-  final adminPassword = 'admin11111';
+  final _adminPassword = 'admin11111';
+  final _adminUser = 'admin1@gmail.com';
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   Future<void> onPressedButton(BuildContext context) async {
     if (formKey.currentState!.validate()) {
         formKey.currentState!.save();
-      if(radioValueController=='admin'){
-        if(passwordController.text==adminPassword){
+        if(passwordController.text==_adminPassword && emailController.text==_adminUser){
         try{
           await loginUser();
           Navigator.pushNamed(context, 'admin');
         }on FirebaseAuthException catch(ex){
-
-          showSnackBar(context, 'Admin email is wrong');
-        }
-      }else{
-          showSnackBar(context,'Something went wrong !');
+          showSnackBar(context, 'your password is wrong');
         }
       }else{
       try{
@@ -38,7 +33,7 @@ class LoginCubit extends Cubit<LoginState>  {
           showSnackBar(context,'Invalid email or password');
 
       }on PlatformException catch (ex) {
-        showSnackBar(context,'Something went wrong !');
+        showSnackBar(context,'Something  wrong !');
       }
       }
     }
